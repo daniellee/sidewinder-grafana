@@ -42,6 +42,7 @@ var SidewinderDatasourceQueryCtrl = exports.SidewinderDatasourceQueryCtrl = func
 
     _this.scope = $scope;
     _this.target.target = _this.target.target;
+    _this.target.field = _this.target.field;
     _this.target.type = 'timeserie';
     if (!_this.target.raw) {
       _this.target.raw = '';
@@ -68,6 +69,9 @@ var SidewinderDatasourceQueryCtrl = exports.SidewinderDatasourceQueryCtrl = func
   }, {
     key: 'getMeasurementOptions',
     value: function getMeasurementOptions() {
+      if (!this.target.target) {
+        this.target.target = '';
+      }
       return this.datasource.metricFindQuery(this.target);
     }
   }, {
@@ -84,6 +88,10 @@ var SidewinderDatasourceQueryCtrl = exports.SidewinderDatasourceQueryCtrl = func
   }, {
     key: 'getFieldOptions',
     value: function getFieldOptions() {
+      if (!this.target.field) {
+        this.target.field = '';
+      }
+
       return this.datasource.fieldOptionsQuery(this.target);
     }
   }, {
